@@ -1,6 +1,7 @@
 /** @format */
 
 import React, {Component} from 'react';
+import Login from './login/Login';
 
 interface Props {}
 
@@ -10,6 +11,6 @@ export default class App extends Component<Props> {
     }
 
     render(): React.ReactNode {
-        return <div>this is simple memorial</div>;
+        return <Login />;
     }
 }
