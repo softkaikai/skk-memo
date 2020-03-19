@@ -17,8 +17,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "re-start": "react-app-rewired start",
     "build": "react-scripts build",
+    "re-build": "react-app-rewired build",
     "test": "react-scripts test",
+    "re-test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,6 +45,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-app-rewired": "^2.1.5"
   }
 }
