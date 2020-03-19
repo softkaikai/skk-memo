@@ -14,5 +14,6 @@ module.exports = override(
     addWebpackAlias({
         ['@']: resolve('./src'),
         ['@styles']: resolve('./src/styles'),
+        ['@components']: resolve('./src/components'),
     }),
 );
