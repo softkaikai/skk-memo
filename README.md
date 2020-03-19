@@ -1,0 +1,2 @@
+# skk-memo
+no
