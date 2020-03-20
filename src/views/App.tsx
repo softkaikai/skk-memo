@@ -2,12 +2,7 @@
 
 import React, {Component} from 'react';
 import Loadable from 'react-loadable';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Redirect,
-    Route,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Redirect, Route} from 'react-router-dom';
 
 import Loading from '@components/Loading';
 import Login from './login';
