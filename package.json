@@ -24,6 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "re-start": "react-app-rewired start",
+    "dev": "react-app-rewired start",
     "build": "react-scripts build",
     "re-build": "react-app-rewired build",
     "test": "react-scripts test",

@@ -1,19 +1,22 @@
 /** @format */
 
 import React, {useState} from 'react';
-import {List, Card, Empty, Button, Menu, Dropdown, Modal, Input} from 'antd';
+import {List, Card, Empty, Button, Menu, Dropdown, Modal, Input, Collapse} from 'antd';
 import {DownOutlined} from '@ant-design/icons';
 import moduleCss from './index.module.css';
 
+const {Panel} = Collapse;
+
 export default function Project() {
     const [addProjectModalVisibility, setAddProjectModalVisibility] = useState(false);
+    const [joinProjectModalVisibility, setJoinProjectModalVisibility] = useState(false);
     const menu = (
         <Menu>
             <Menu.Item>
                 <a onClick={() => setAddProjectModalVisibility(true)}>创建项目</a>
             </Menu.Item>
             <Menu.Item>
-                <a>加入项目</a>
+                <a onClick={() => setJoinProjectModalVisibility(true)}>加入项目</a>
             </Menu.Item>
         </Menu>
     );
@@ -25,6 +28,23 @@ export default function Project() {
     function addProjectModalCancel() {
         setAddProjectModalVisibility(false);
     }
+    function joinProjectModalOk() {
+        setJoinProjectModalVisibility(false);
+    }
+    function joinProjectModalCancel() {
+        setJoinProjectModalVisibility(false);
+    }
+    function joinProject(event: React.MouseEvent) {
+        event.stopPropagation();
+    }
+    function joinProjectBtn() {
+        return (
+            <span onClick={joinProject} style={{color: '#07d', cursor: 'pointer'}}>
+                添加
+            </span>
+        );
+    }
+
     return (
         <div className={moduleCss.project}>
             <Modal
@@ -35,6 +55,24 @@ export default function Project() {
             >
                 <Input style={{marginBottom: '10px'}} maxLength={10} placeholder="Title" />
                 <textarea className={moduleCss.project__textarea} placeholder="Describe" maxLength={200}></textarea>
+            </Modal>
+            <Modal
+                title="加入项目 0 - 0"
+                visible={joinProjectModalVisibility}
+                onOk={joinProjectModalOk}
+                onCancel={joinProjectModalCancel}
+            >
+                <Collapse defaultActiveKey={['1']}>
+                    <Panel header="This is panel header 1" key="1" extra={joinProjectBtn()}>
+                        <p>dfgdfgfdgfdgfdg</p>
+                    </Panel>
+                    <Panel header="This is panel header 2" key="2" extra={joinProjectBtn()}>
+                        <p>dfgdfgfdgfdgfdg</p>
+                    </Panel>
+                    <Panel header="This is panel header 3" key="3" extra={joinProjectBtn()}>
+                        <p>dfgdfgfdgfdgfdg</p>
+                    </Panel>
+                </Collapse>
             </Modal>
 
             <header className={moduleCss.project__title}>
