@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import {List, Card, Empty, Button, Menu, Dropdown, Modal, Input, Collapse} from 'antd';
 import {DownOutlined} from '@ant-design/icons';
+import {useHistory} from 'react-router-dom';
 import moduleCss from './index.module.css';
 
 const {Panel} = Collapse;
@@ -20,7 +21,8 @@ export default function Project() {
             </Menu.Item>
         </Menu>
     );
-    const data: Array<{title: string}> = [];
+    const data: Array<{title: string}> = [{title: 'kaikaiTest'}];
+    const history = useHistory();
 
     function addProjectModalOk() {
         setAddProjectModalVisibility(false);
@@ -43,6 +45,10 @@ export default function Project() {
                 添加
             </span>
         );
+    }
+
+    function jumpToProject() {
+        history.push('/memorial');
     }
 
     return (
@@ -89,7 +95,14 @@ export default function Project() {
                         dataSource={data}
                         renderItem={item => (
                             <List.Item>
-                                <Card title={item.title}>Card content</Card>
+                                <Card title={item.title}>
+                                    Card content
+                                    <div style={{marginTop: '20px', textAlign: 'right'}}>
+                                        <Button type="primary" onClick={jumpToProject}>
+                                            立即进入
+                                        </Button>
+                                    </div>
+                                </Card>
                             </List.Item>
                         )}
                     />

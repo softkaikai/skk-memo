@@ -15,5 +15,6 @@ module.exports = override(
         ['@']: resolve('./src'),
         ['@styles']: resolve('./src/styles'),
         ['@components']: resolve('./src/components'),
+        ['@utils']: resolve('./src/utils'),
     }),
 );
