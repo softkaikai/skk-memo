@@ -15,6 +15,10 @@ const AsyncMemorial = Loadable({
     loader: () => import('./memorial'),
     loading: Loading,
 });
+const AsyncShares = Loadable({
+    loader: () => import('./shares'),
+    loading: Loading,
+});
 
 interface Props {}
 
@@ -30,6 +34,7 @@ export default class App extends Component<Props> {
                     <Route exact path="/" component={Login} />
                     <Route path="/project" component={AsyncProject} />
                     <Route path="/memorial" component={AsyncMemorial} />
+                    <Route path="/shares" component={AsyncShares} />
                     <Route path="*">
                         <Redirect to="/" />
                     </Route>

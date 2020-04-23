@@ -10,3 +10,29 @@
 .color-red {
     color: red;
 }
+
+.table {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+}
+
+.table tr {
+    border: 1px solid #e0e0e0;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.table thead tr {
+    height: 40px;
+    line-height: 40px;
+    background: #f0f0f0;
+}
+
+.table td {
+
+}
+
+.a {
+    color: #07d;
+    cursor: pointer;
+}
