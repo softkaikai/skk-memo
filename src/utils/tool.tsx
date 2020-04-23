@@ -21,3 +21,13 @@ export function getYMD(date?: Date): string {
 
     return `${date.getFullYear()}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate())}`;
 }
+
+export function getYMDHM(date?: Date): string {
+    if (!date) {
+        date = new Date();
+    }
+
+    return `${date.getFullYear()}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate())} ${addZero(
+        date.getHours(),
+    )}:${addZero(date.getMinutes())}`;
+}
