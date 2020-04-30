@@ -4,8 +4,8 @@ import React, {useState} from 'react';
 import {Route, useHistory} from 'react-router-dom';
 import {Input, DatePicker, Modal, Button, Radio, message} from 'antd';
 import {AddRecord, RecordEnum, EditRecord, EditRecordNum} from './index.d';
-import {getYMDHM, deepCopy} from '@utils/tool';
-import {RadioChangeEvent} from "antd/lib/radio";
+import {getYMDHM, deepCopy} from '@utils/tool.util';
+import {RadioChangeEvent} from 'antd/lib/radio';
 const {TextArea} = Input;
 
 export default function SharesForecast() {

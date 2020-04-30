@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect} from 'react';
 import {Tag} from 'antd';
-import {deepCopy} from '@utils/tool';
+import {deepCopy} from '@utils/tool.util';
 const {CheckableTag} = Tag;
 
 export interface RefFunction {

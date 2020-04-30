@@ -2,28 +2,62 @@
 
 import React, {Component, useState} from 'react';
 import loginCss from './index.module.css';
-import {Button, Input, Select} from 'antd';
+import {Button, Input, Select, message} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import {Props} from '@/types';
 import {useHistory} from 'react-router-dom';
+import userApi from '@/apis/user.api';
 
 const {Option} = Select;
 
 export default function Index(props: Props) {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
+    const [code, setCode] = useState('');
     // 默认登录
     const [signType, setSignType] = useState('Sign In');
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
 
-    function getData() {
+    function login() {
+        if (loading) return;
+        if (!account) return message.error('请输入手机号');
+        if (!password) return message.error('请输入密码');
+        if (signType === 'Sign Up' && !code) return message.error('请输入邀请码');
         setLoading(true);
-        setTimeout(() => {
-            // setLoading(false)
-            history.push('/project');
-        }, 1000);
+        if (signType === 'Sign Up') {
+            userApi
+                .register({
+                    phone: account,
+                    password: password,
+                    code: code,
+                })
+                .then((res: any) => {
+                    const data = res.data;
+                    setLoading(false);
+                    if (data.code === '0') {
+                        message.success('注册成功');
+                    } else {
+                        message.error(data.msg);
+                    }
+                });
+        } else {
+            userApi
+                .login({
+                    phone: account,
+                    password: password,
+                })
+                .then((res: any) => {
+                    const data = res.data;
+                    setLoading(false);
+                    if (data.code === '0') {
+                        history.push('/project');
+                    } else {
+                        message.error(data.msg);
+                    }
+                });
+        }
     }
 
     return (
@@ -44,13 +78,20 @@ export default function Index(props: Props) {
                         <Option value="Sign In">Sign In</Option>
                     </Select>
                 </Input.Group>
+                {signType === 'Sign Up' ? (
+                    <Input
+                        onChange={e => setCode(e.target.value)}
+                        style={{marginBottom: '20px'}}
+                        placeholder="input invitation code"
+                    />
+                ) : null}
                 <Input.Password
                     onChange={e => setPassword(e.target.value)}
                     style={{marginBottom: '70px'}}
                     placeholder="input password"
                 />
 
-                <Button type="primary" disabled={loading} loading={loading} onClick={getData}>
+                <Button type="primary" disabled={loading} loading={loading} onClick={login}>
                     {signType}
                 </Button>
             </div>
