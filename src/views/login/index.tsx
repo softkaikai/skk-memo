@@ -7,6 +7,7 @@ import {UserOutlined} from '@ant-design/icons';
 import {Props} from '@/types';
 import {useHistory} from 'react-router-dom';
 import userApi from '@/apis/user.api';
+import localStorageTool from '@utils/localStorage.util';
 
 const {Option} = Select;
 
@@ -37,7 +38,10 @@ export default function Index(props: Props) {
                     const data = res.data;
                     setLoading(false);
                     if (data.code === '0') {
+                        localStorageTool.set('token', data.data);
+                        localStorageTool.set('phone', account);
                         message.success('注册成功');
+                        history.push('/project');
                     } else {
                         message.error(data.msg);
                     }
@@ -52,6 +56,8 @@ export default function Index(props: Props) {
                     const data = res.data;
                     setLoading(false);
                     if (data.code === '0') {
+                        localStorageTool.set('token', data.data);
+                        localStorageTool.set('phone', account);
                         history.push('/project');
                     } else {
                         message.error(data.msg);
