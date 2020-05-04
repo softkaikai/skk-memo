@@ -12,7 +12,14 @@ function create(name: string) {
     });
 }
 
+function find() {
+    return api({
+        url: 'tag/find'
+    })
+}
+
 
 export default {
     create,
+    find,
 };

@@ -20,6 +20,7 @@
     overflow: auto;
 }
 .memo__result-list {
+    position: relative;
     width: 100%;
     line-height: 40px;
     padding: 0 20px;
@@ -30,6 +31,16 @@
     white-space: nowrap;
 
     font-size: 12px;
+}
+.memo__result-list .delete {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: #07d;
+    cursor: pointer;
+}
+.memo__result-list_active {
+    background: #f8f8f8;
 }
 .memo__code {
     width: 0;
