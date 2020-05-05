@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import Loadable from 'react-loadable';
-import {BrowserRouter as Router, Switch, Redirect, Route} from 'react-router-dom';
+import {HashRouter as Router, Switch, Redirect, Route} from 'react-router-dom';
 
 import Loading from '@components/Loading';
 import Login from './login';
@@ -28,8 +28,9 @@ export default class App extends Component<Props> {
     }
 
     render(): React.ReactNode {
+        const basename = process.env.NODE_ENV !== 'production' ? '/' : '/';
         return (
-            <Router>
+            <Router basename={basename}>
                 <Switch>
                     <Route exact path="/" component={Login} />
                     <Route path="/project" component={AsyncProject} />

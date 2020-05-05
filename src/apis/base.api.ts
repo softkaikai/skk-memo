@@ -10,7 +10,7 @@ interface ApiData {
     data?: any;
 }
 export default function(req: ApiData) {
-    const baseURL = process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:3333' : 'http://some-domain.com';
+    const baseURL = process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:3333' : 'http://112.126.92.26:3333';
     const headers: any = {};
     if (req.contentType === 'file') {
         headers['Content-Type'] = 'multipart/form-data';
